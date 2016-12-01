@@ -3,10 +3,11 @@
 This is a Sockets project for CES-35 (Networks) subject from ITA - Aeronautical Technology Institute (www.ita.br)
 
 ## 0. Introduction
-This work is meant as a study and introduction to the use of sockets and low level network management in python. The use of the TCP/IP communication protocol will be implemented and studied through a simple chat application with file transfering. The main goal is to be able to estabilish a connection and build on top of the protocol the messaging, uploading and downloading in a distributed manner. The work herein is based on three tutorials from [BogoToBogo](http://www.bogotobogo.com/), more especifically:
+This work is meant as a study and introduction to the use of sockets and low level network management in python. The use of the TCP/IP communication protocol will be implemented and studied through a simple chat application with file transfering. The main goal is to be able to estabilish a connection and build on top of the protocol the messaging, uploading and downloading in a distributed manner. The work herein is based on three tutorials from [BogoToBogo](http://www.bogotobogo.com/) and one from [Xin Wang](http://wangx.in/), more especifically:
  1. [NETWORK PROGRAMMING - SERVER & CLIENT A : BASICS](http://www.bogotobogo.com/pyt python_network_programming_server_client.php)
  2. [NETWORK PROGRAMMING - SERVER & CLIENT B : FILE TRANSFER](http://www.bogotobogo.com/pyt python_network_programming_server_client_file_transfer.php)
  3. [NETWORK PROGRAMMING II - CHAT SERVER & CLIENT](http://www.bogotobogo.com/pyt python_network_programming_tcp_server_client_chat_server_chat_client_select.p)
+ 4. [WhatsUp](http://wangx.in/post/multi-user_chatting_program_implemented_in_python/)
 
 ## 1. Sockets in Python
 Taken from [socket - Low-level networking interface](https://docs.python.org/3/library/socket.html):
@@ -19,5 +20,6 @@ The following is a summary of key functions that will be used and their explanat
   4. **socket.accept()**: The return value is a pair (conn, address) where conn is a new socket object usable to send   receive data on the connection, and address is the address bound to the socket on the other end of the connection.
   At accept(), a new socket is created that is distinct from the named socket. This new socket is used solely   communication with this particular client.
   For TCP servers, the socket object used to receive connections is not the same socket used to perform subsequ  communication with the client. In particular, the accept() system call returns a new socket object that's actually u  for the connection. This allows a server to manage connections from a large number of clients simultaneously.
-  5. **socket.send(bytes[, flags])**: Send data to the socket. The socket must be connected to a remote socket. Returns   number of bytes sent. Applications are responsible for checking that all data has been sent; if only some of the data   transmitted, the application needs to attempt delivery of the remaining data.
-  6.**socket.close()**: Mark the socket closed. all future operations on the socket object will fail. The remote end w  receive no more data (after queued data is flushed). Sockets are automatically closed when they are garbage-collected,   it is recommended to close() them explicitly.
+  5. **socket.recv(bufsize[, flags])**: Receive data from the socket. The return value is a bytes object representing the data received. The maximum amount of data to be received at once is specified by bufsize. See the Unix manual page recv(2) for the meaning of the optional argument flags; it defaults to zero.
+  6. **socket.send(bytes[, flags])**: Send data to the socket. The socket must be connected to a remote socket. Returns   number of bytes sent. Applications are responsible for checking that all data has been sent; if only some of the data   transmitted, the application needs to attempt delivery of the remaining data.
+  7.**socket.close()**: Mark the socket closed. all future operations on the socket object will fail. The remote end w  receive no more data (after queued data is flushed). Sockets are automatically closed when they are garbage-collected,   it is recommended to close() them explicitly.
