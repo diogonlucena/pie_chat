@@ -1,6 +1,7 @@
 import sys
 import socket
 import select
+import getpass
  
 def chat_client():
     if(len(sys.argv) < 3) :
@@ -19,7 +20,8 @@ def chat_client():
     except :
         print('Unable to connect')
         sys.exit()
-     
+    
+    username = getpass.getuser() 
     print('Connected to remote host. You can start sending messages')
     sys.stdout.write('[Me] '); sys.stdout.flush()
      
@@ -44,7 +46,7 @@ def chat_client():
             else :
                 # user entered a message
                 msg = sys.stdin.readline()
-                s.send(msg.encode('ascii'))
+                s.send((username+" >> "+msg).encode('ascii'))
                 sys.stdout.write('[Me] '); sys.stdout.flush() 
 
 if __name__ == "__main__":
