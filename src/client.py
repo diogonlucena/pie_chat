@@ -46,7 +46,7 @@ def chat_client():
             else :
                 # user entered a message
                 msg = sys.stdin.readline()
-                s.send((username+" >> "+msg).encode('ascii'))
+                s.send(("["+username.upper()+"] >> "+msg).encode('ascii'))
                 sys.stdout.write('[Me] '); sys.stdout.flush() 
 
 if __name__ == "__main__":
